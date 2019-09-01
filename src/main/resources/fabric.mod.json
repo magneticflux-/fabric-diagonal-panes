@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "fabric-diagonal-panes",
+  "version": "${version}",
+  "name": "Fabric Diagonal Panes",
+  "description": "Diagonal panes!",
+  "authors": [
+    "magneticflux-"
+  ],
+  "contact": {
+    "homepage": "https://github.com/magneticflux-/fabric-diagonal-panes",
+    "sources": "https://github.com/magneticflux-/fabric-diagonal-panes"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/fabric-diagonal-panes/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.skaggsm.diagonalpanes.FabricDiagonalPanes"
+    ]
+  },
+  "mixins": [
+    "fabric-diagonal-panes.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  },
+  "suggests": {
+  }
+}
