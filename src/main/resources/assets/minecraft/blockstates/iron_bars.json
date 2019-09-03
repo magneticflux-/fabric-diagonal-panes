@@ -64,6 +64,82 @@
       }
     },
     {
+      "when": {
+        "OR": [
+          {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": false,
+            "south": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": false,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": true,
+            "east": false,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": false
+          },
+          {
+            "north": true,
+            "south": true,
+            "east": false,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": false,
+            "east": false,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": true,
+            "east": false,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": true,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": false,
+            "west": true
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": false,
+            "west": false
+          }
+        ]
+      },
       "apply": {
         "model": "block/iron_bars_post_ends"
       }
