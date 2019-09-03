@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_pane_diagonal",
+  "textures": {
+    "edge": "block/iron_bars",
+    "pane": "block/iron_bars"
+  }
+}

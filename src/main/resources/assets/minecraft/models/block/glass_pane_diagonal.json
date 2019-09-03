@@ -1,5 +1,5 @@
 {
-    "parent": "block/template_glass_pane_diagonal",
+    "parent": "block/template_pane_diagonal",
     "textures": {
         "edge": "block/glass_pane_top",
         "pane": "block/glass"
