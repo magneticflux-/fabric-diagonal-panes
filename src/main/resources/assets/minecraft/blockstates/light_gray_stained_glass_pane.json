@@ -12,7 +12,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_diagonal"
+        "model": "block/light_gray_stained_glass_pane_diagonal"
       }
     },
     {
@@ -27,7 +27,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_diagonal",
+        "model": "block/light_gray_stained_glass_pane_diagonal",
         "y": 90
       }
     },
@@ -43,7 +43,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_diagonal",
+        "model": "block/light_gray_stained_glass_pane_diagonal",
         "y": 180
       }
     },
@@ -59,7 +59,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_diagonal",
+        "model": "block/light_gray_stained_glass_pane_diagonal",
         "y": 270
       }
     },
@@ -141,7 +141,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_post"
+        "model": "block/light_gray_stained_glass_pane_post"
       }
     },
     {
@@ -164,7 +164,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_side"
+        "model": "block/light_gray_stained_glass_pane_side"
       }
     },
     {
@@ -187,7 +187,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_side",
+        "model": "block/light_gray_stained_glass_pane_side",
         "y": 90
       }
     },
@@ -211,7 +211,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_side_alt"
+        "model": "block/light_gray_stained_glass_pane_side_alt"
       }
     },
     {
@@ -234,7 +234,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_side_alt",
+        "model": "block/light_gray_stained_glass_pane_side_alt",
         "y": 90
       }
     },
@@ -258,7 +258,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_noside"
+        "model": "block/light_gray_stained_glass_pane_noside"
       }
     },
     {
@@ -281,7 +281,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_noside_alt"
+        "model": "block/light_gray_stained_glass_pane_noside_alt"
       }
     },
     {
@@ -304,7 +304,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_noside_alt",
+        "model": "block/light_gray_stained_glass_pane_noside_alt",
         "y": 90
       }
     },
@@ -328,7 +328,7 @@
         ]
       },
       "apply": {
-        "model": "block/light_gray_glass_pane_noside",
+        "model": "block/light_gray_stained_glass_pane_noside",
         "y": 270
       }
     }
