@@ -203,7 +203,22 @@
     },
     {
       "when": {
-        "north": true
+        "OR": [
+          {
+            "north": true,
+            "south": true
+          },
+          {
+            "north": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "east": false,
+            "west": false
+          }
+        ]
       },
       "apply": {
         "model": "block/iron_bars_side"
@@ -211,7 +226,22 @@
     },
     {
       "when": {
-        "east": true
+        "OR": [
+          {
+            "east": true,
+            "west": true
+          },
+          {
+            "east": true,
+            "north": true,
+            "south": true
+          },
+          {
+            "east": true,
+            "north": false,
+            "south": false
+          }
+        ]
       },
       "apply": {
         "model": "block/iron_bars_side",
@@ -220,7 +250,22 @@
     },
     {
       "when": {
-        "south": true
+        "OR": [
+          {
+            "south": true,
+            "north": true
+          },
+          {
+            "south": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "south": true,
+            "east": false,
+            "west": false
+          }
+        ]
       },
       "apply": {
         "model": "block/iron_bars_side_alt"
@@ -228,7 +273,22 @@
     },
     {
       "when": {
-        "west": true
+        "OR": [
+          {
+            "west": true,
+            "east": true
+          },
+          {
+            "west": true,
+            "north": true,
+            "south": true
+          },
+          {
+            "west": true,
+            "north": false,
+            "south": false
+          }
+        ]
       },
       "apply": {
         "model": "block/iron_bars_side_alt",
