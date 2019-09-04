@@ -1,0 +1,336 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "AND": [
+          {
+            "north": true,
+            "east": true,
+            "south": false,
+            "west": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_diagonal"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "north": false,
+            "east": true,
+            "south": true,
+            "west": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_diagonal",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "north": false,
+            "east": false,
+            "south": true,
+            "west": true
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_diagonal",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "north": true,
+            "east": false,
+            "south": false,
+            "west": true
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_diagonal",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": false,
+            "south": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": false,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": true,
+            "east": false,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": false
+          },
+          {
+            "north": true,
+            "south": true,
+            "east": false,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "south": false,
+            "east": false,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": true,
+            "east": false,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": true,
+            "west": false
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": false,
+            "west": true
+          },
+          {
+            "north": false,
+            "south": false,
+            "east": false,
+            "west": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_post"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "north": true,
+            "south": true
+          },
+          {
+            "north": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": true,
+            "east": false,
+            "west": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_side"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "east": true,
+            "west": true
+          },
+          {
+            "east": true,
+            "north": true,
+            "south": true
+          },
+          {
+            "east": true,
+            "north": false,
+            "south": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_side",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "south": true,
+            "north": true
+          },
+          {
+            "south": true,
+            "east": true,
+            "west": true
+          },
+          {
+            "south": true,
+            "east": false,
+            "west": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_side_alt"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "west": true,
+            "east": true
+          },
+          {
+            "west": true,
+            "north": true,
+            "south": true
+          },
+          {
+            "west": true,
+            "north": false,
+            "south": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_side_alt",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "north": false,
+            "east": false,
+            "west": false
+          },
+          {
+            "north": false,
+            "east": true,
+            "west": true
+          },
+          {
+            "north": false,
+            "south": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_noside"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "east": false,
+            "north": false,
+            "south": false
+          },
+          {
+            "east": false,
+            "north": true,
+            "south": true
+          },
+          {
+            "east": false,
+            "west": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_noside_alt"
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "south": false,
+            "east": false,
+            "west": false
+          },
+          {
+            "south": false,
+            "east": true,
+            "west": true
+          },
+          {
+            "south": false,
+            "north": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_noside_alt",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "OR": [
+          {
+            "west": false,
+            "north": false,
+            "south": false
+          },
+          {
+            "west": false,
+            "north": true,
+            "south": true
+          },
+          {
+            "west": false,
+            "east": false
+          }
+        ]
+      },
+      "apply": {
+        "model": "block/yellow_stained_glass_pane_noside",
+        "y": 270
+      }
+    }
+  ]
+}
