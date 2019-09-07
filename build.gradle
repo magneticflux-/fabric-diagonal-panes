@@ -3,7 +3,7 @@ plugins {
     id "idea"
     id "maven-publish"
     id "fabric-loom" version "0.2.5-SNAPSHOT"
-    id "com.github.ben-manes.versions" version "0.23.0"
+    id "com.github.ben-manes.versions" version "0.24.0"
     id "com.github.johnrengelman.shadow" version "5.1.0"
     id "com.matthewprenger.cursegradle" version "1.4.0"
     id 'org.shipkit.java' version '2.2.5'
