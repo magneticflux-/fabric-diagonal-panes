@@ -2,16 +2,16 @@ plugins {
     id "java"
     id "idea"
     id "maven-publish"
-    id "fabric-loom" version "0.2.5-SNAPSHOT"
-    id "com.github.ben-manes.versions" version "0.24.0"
-    id "com.github.johnrengelman.shadow" version "5.1.0"
+    id 'fabric-loom' version '0.2.6-SNAPSHOT'
+    id 'com.github.ben-manes.versions' version '0.27.0'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
     id "com.matthewprenger.cursegradle" version "1.4.0"
     id 'org.shipkit.java' version '2.2.5'
 }
 
 configurations {
-    shaded
-    implementation.extendsFrom shaded
+    modShaded
+    modImplementation.extendsFrom modShaded
 }
 
 repositories {
@@ -38,11 +38,11 @@ minecraft {
 dependencies {
     //to change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}"
-    modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
     // Fabric API. This is technically optional, but you probably want it anyway.
-    modCompile "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 }
 
 processResources {
@@ -81,7 +81,7 @@ jar {
 
 // Configure shadowing
 shadowJar {
-    configurations = [project.configurations.shaded]
+    configurations = [project.configurations.modShaded]
     //relocate "some.library", "my.mod.shadowed.some.library"
 }
 
@@ -91,22 +91,9 @@ remapJar {
 }
 
 // Remove the ShipKit publication and recreate it with Fabric artifacts
-publishing.publications.remove(publishing.publications.getByName('javaLibrary'))
-tasks.remove(tasks.getByName('generateMetadataFileForJavaLibraryPublication'))
-tasks.remove(tasks.getByName('generatePomFileForJavaLibraryPublication'))
-tasks.remove(tasks.getByName('publishJavaLibraryPublicationToMavenLocal'))
-publishing {
-    publications {
-        javaLibrary(MavenPublication) {
-            artifact(remapJar)
-            artifact(sourcesJar) {
-                // Don't remap sources so ShipKit doesn't get confused by missing sources
-                // Remap sources drops anything not *.java
-
-                //builtBy remapSourcesJar
-            }
-        }
-    }
+publishing.publications.getByName('javaLibrary') {
+    delegate.artifacts = [remapJar, sourcesJar]
+    delegate.getArtifacts() // Force evaluation here. Fails if lazily evaluated later for some reason...
 }
 
 // Configure CurseForge publishing
