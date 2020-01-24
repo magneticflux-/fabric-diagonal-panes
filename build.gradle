@@ -6,7 +6,7 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.27.0'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
     id "com.matthewprenger.cursegradle" version "1.4.0"
-    id 'org.shipkit.java' version '2.2.5'
+    id 'org.shipkit.java' version '2.3.0'
 }
 
 configurations {
@@ -108,8 +108,10 @@ curseforge {
 
     project {
         id = project.curseforge_id
-        releaseType = "beta"
+        releaseType = 'release'
         addGameVersion "$project.minecraft_version"
+        addGameVersion 'Fabric'
+        setChangelog 'View the changelog here: https://github.com/magneticflux-/fabric-diagonal-panes/blob/develop/docs/release-notes.md'
         mainArtifact(remapJar) {
             displayName = "$archives_base_name-$project.version [$project.minecraft_version]"
             relations {
