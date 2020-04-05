@@ -12,7 +12,8 @@
         ]
       },
       "apply": {
-        "model": "block/glass_pane_diagonal"
+        "model": "block/glass_pane_diagonal",
+        "y": 0
       }
     },
     {
