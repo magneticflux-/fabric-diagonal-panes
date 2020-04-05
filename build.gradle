@@ -6,7 +6,7 @@ plugins {
     id 'com.github.ben-manes.versions' version '0.27.0'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
     id "com.matthewprenger.cursegradle" version "1.4.0"
-    id 'org.shipkit.java' version '2.3.0'
+    id 'org.shipkit.java' version '2.3.1'
 }
 
 configurations {
@@ -48,7 +48,7 @@ dependencies {
     // Optifine for testing extra features
     modCompile 'com.github.modmuss50:OptiFabric:1.0.0-beta8'
     // Deps required for optifabric
-    compile 'org.zeroturnaround:zt-zip:1.14'
+    modCompile 'org.zeroturnaround:zt-zip:1.14'
 }
 
 processResources {
