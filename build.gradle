@@ -57,9 +57,9 @@ dependencies {
 
 
     // Optifine for testing extra features
-    modCompile 'com.github.modmuss50:OptiFabric:1.0.0-beta8'
+    modImplementation 'com.github.modmuss50:OptiFabric:1.0.0-beta8'
     // Deps required for optifabric
-    modCompile 'org.zeroturnaround:zt-zip:1.14'
+    modImplementation 'org.zeroturnaround:zt-zip:1.14'
 }
 
 processResources {
