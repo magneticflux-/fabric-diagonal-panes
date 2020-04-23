@@ -16,15 +16,22 @@ configurations {
 
 repositories {
     maven {
-        url = "http://maven.fabricmc.net/"
-        name = "Fabric"
+        url = 'https://maven.fabricmc.net/'
+        name = 'Fabric'
     }
     maven {
-        url = "https://minecraft.curseforge.com/api/maven"
-        name = "CurseForge"
+        url 'https://server.bbkr.space/artifactory/libs-release'
+        name = 'CottonMC'
+    }
+    maven {
+        url = 'https://minecraft.curseforge.com/api/maven'
+        name = 'CurseForge'
     }
     jcenter()
-    maven { url = 'https://jitpack.io' }
+    maven {
+        url = 'https://jitpack.io'
+        name = 'JitPack'
+    }
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -45,10 +52,14 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
+    modImplementation "io.github.cottonmc.cotton:cotton:1.0.3"
+    include "io.github.cottonmc.cotton:cotton:1.0.3"
+
+
     // Optifine for testing extra features
-    modCompile 'com.github.modmuss50:OptiFabric:1.0.0-beta8'
+    modImplementation 'com.github.modmuss50:OptiFabric:1.0.0-beta8'
     // Deps required for optifabric
-    modCompile 'org.zeroturnaround:zt-zip:1.14'
+    modImplementation 'org.zeroturnaround:zt-zip:1.14'
 }
 
 processResources {
