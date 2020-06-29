@@ -1,11 +1,11 @@
 plugins {
-    id "java"
-    id "idea"
-    id "maven-publish"
-    id 'fabric-loom' version '0.2.6-SNAPSHOT'
-    id 'com.github.ben-manes.versions' version '0.27.0'
+    id 'java'
+    id 'idea'
+    id 'maven-publish'
+    id 'fabric-loom' version '0.4-SNAPSHOT'
+    id 'com.github.ben-manes.versions' version '0.28.0'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
-    id "com.matthewprenger.cursegradle" version "1.4.0"
+    id 'com.matthewprenger.cursegradle' version '1.4.0'
     id 'org.shipkit.java' version '2.3.1'
 }
 
@@ -52,14 +52,14 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    modImplementation "io.github.cottonmc.cotton:cotton:1.0.3"
-    include "io.github.cottonmc.cotton:cotton:1.0.3"
+    modImplementation 'io.github.cottonmc.cotton:cotton:1.0.5'
+    include 'io.github.cottonmc.cotton:cotton:1.0.5'
 
 
     // Optifine for testing extra features
-    modImplementation 'com.github.modmuss50:OptiFabric:1.0.0-beta8'
+    //modImplementation 'com.github.modmuss50:OptiFabric:1.0.0-beta8'
     // Deps required for optifabric
-    modImplementation 'org.zeroturnaround:zt-zip:1.14'
+    //modImplementation 'org.zeroturnaround:zt-zip:1.14'
 }
 
 processResources {
