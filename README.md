@@ -1,6 +1,6 @@
-[![](http://cf.way2muchnoise.eu/short_fabric-diagonal-panes_downloads.svg)](https://minecraft.curseforge.com/projects/fabric-diagonal-panes)
-[![](http://cf.way2muchnoise.eu/versions/fabric-diagonal-panes_all.svg)](https://minecraft.curseforge.com/projects/fabric-diagonal-panes)
-[![](http://cf.way2muchnoise.eu/packs/short_fabric-diagonal-panes.svg)](https://minecraft.curseforge.com/projects/fabric-diagonal-panes)
+[![](http://cf.way2muchnoise.eu/short_diagonal-panes_downloads.svg)](https://www.curseforge.com/minecraft/mc-mods/diagonal-panes)
+[![](http://cf.way2muchnoise.eu/versions/diagonal-panes_all.svg)](https://www.curseforge.com/minecraft/mc-mods/diagonal-panes)
+[![](http://cf.way2muchnoise.eu/packs/short_diagonal-panes.svg)](https://www.curseforge.com/minecraft/mc-mods/diagonal-panes)
 
 # Fabric Diagonal Panes
 
