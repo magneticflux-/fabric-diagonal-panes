@@ -2,8 +2,7 @@
   "required": true,
   "package": "com.skaggsm.diagonalpanes.mixin",
   "compatibilityLevel": "JAVA_8",
-  "mixins": [
-  ],
+  "mixins": ["HorizontalConnectingBlockAccessor", "PaneBlockMixin"],
   "client": [
   ],
   "injectors": {
