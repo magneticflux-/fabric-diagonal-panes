@@ -2,11 +2,11 @@ plugins {
     id 'java'
     id 'idea'
     id 'maven-publish'
-    id 'fabric-loom' version '0.4-SNAPSHOT'
-    id 'com.github.ben-manes.versions' version '0.29.0'
+    id 'fabric-loom' version '0.5-SNAPSHOT'
+    id 'com.github.ben-manes.versions' version '0.36.0'
     id 'com.github.johnrengelman.shadow' version '5.2.0'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
-    id 'org.shipkit.java' version '2.3.4'
+    id 'org.shipkit.java' version '2.3.5'
 }
 
 configurations {
@@ -19,19 +19,7 @@ repositories {
         url = 'https://maven.fabricmc.net/'
         name = 'Fabric'
     }
-    maven {
-        url 'https://server.bbkr.space/artifactory/libs-release'
-        name = 'CottonMC'
-    }
-    maven {
-        url = 'https://minecraft.curseforge.com/api/maven'
-        name = 'CurseForge'
-    }
     jcenter()
-    maven {
-        url = 'https://jitpack.io'
-        name = 'JitPack'
-    }
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -51,14 +39,6 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-    // Needed for virtual resource packs
-    modImplementation 'io.github.cottonmc.cotton:cotton:1.0.7'
-    include 'io.github.cottonmc.cotton:cotton:1.0.7'
-
-    // Needed for 1.16.2 compat right now
-    modImplementation 'io.github.cottonmc:Jankson-Fabric:3.0.1+j1.2.0'
-    include 'io.github.cottonmc:Jankson-Fabric:3.0.1+j1.2.0'
 }
 
 processResources {
