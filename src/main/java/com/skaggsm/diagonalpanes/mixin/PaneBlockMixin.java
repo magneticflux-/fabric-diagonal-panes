@@ -28,48 +28,44 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
         VoxelShape east = Block.createCuboidShape(7, 0, 7, 16, 16, 9);
 
         VoxelShape westSouth = VoxelShapes.union(
-                Block.createCuboidShape(7, 0, 15, 9, 16, 16),
-                Block.createCuboidShape(6, 0, 14, 8, 16, 15),
-                Block.createCuboidShape(5, 0, 13, 7, 16, 14),
-                Block.createCuboidShape(4, 0, 12, 6, 16, 13),
-                Block.createCuboidShape(3, 0, 11, 5, 16, 12),
-                Block.createCuboidShape(2, 0, 10, 4, 16, 11),
-                Block.createCuboidShape(1, 0, 9, 3, 16, 10),
-                Block.createCuboidShape(0, 0, 8, 2, 16, 9),
-                Block.createCuboidShape(0, 0, 7, 1, 16, 8)
+                Block.createCuboidShape(7, 0, 14, 9, 16, 16),
+                Block.createCuboidShape(6, 0, 13, 8, 16, 15),
+                Block.createCuboidShape(5, 0, 12, 7, 16, 14),
+                Block.createCuboidShape(4, 0, 11, 6, 16, 13),
+                Block.createCuboidShape(3, 0, 10, 5, 16, 12),
+                Block.createCuboidShape(2, 0, 9, 4, 16, 11),
+                Block.createCuboidShape(1, 0, 8, 3, 16, 10),
+                Block.createCuboidShape(0, 0, 7, 2, 16, 9)
         );
         VoxelShape northWest = VoxelShapes.union(
-                Block.createCuboidShape(7, 0, 0, 9, 16, 1),
-                Block.createCuboidShape(6, 0, 1, 8, 16, 2),
-                Block.createCuboidShape(5, 0, 2, 7, 16, 3),
-                Block.createCuboidShape(4, 0, 3, 6, 16, 4),
-                Block.createCuboidShape(3, 0, 4, 5, 16, 5),
-                Block.createCuboidShape(2, 0, 5, 4, 16, 6),
-                Block.createCuboidShape(1, 0, 6, 3, 16, 7),
-                Block.createCuboidShape(0, 0, 7, 2, 16, 8),
-                Block.createCuboidShape(0, 0, 8, 1, 16, 9)
+                Block.createCuboidShape(7, 0, 0, 9, 16, 2),
+                Block.createCuboidShape(6, 0, 1, 8, 16, 3),
+                Block.createCuboidShape(5, 0, 2, 7, 16, 4),
+                Block.createCuboidShape(4, 0, 3, 6, 16, 5),
+                Block.createCuboidShape(3, 0, 4, 5, 16, 6),
+                Block.createCuboidShape(2, 0, 5, 4, 16, 7),
+                Block.createCuboidShape(1, 0, 6, 3, 16, 8),
+                Block.createCuboidShape(0, 0, 7, 2, 16, 9)
         );
         VoxelShape eastSouth = VoxelShapes.union(
-                Block.createCuboidShape(7, 0, 15, 9, 16, 16),
-                Block.createCuboidShape(8, 0, 14, 10, 16, 15),
-                Block.createCuboidShape(9, 0, 13, 11, 16, 14),
-                Block.createCuboidShape(10, 0, 12, 12, 16, 13),
-                Block.createCuboidShape(11, 0, 11, 13, 16, 12),
-                Block.createCuboidShape(12, 0, 10, 14, 16, 11),
-                Block.createCuboidShape(13, 0, 9, 15, 16, 10),
-                Block.createCuboidShape(14, 0, 8, 16, 16, 9),
-                Block.createCuboidShape(15, 0, 7, 16, 16, 8)
+                Block.createCuboidShape(7, 0, 14, 9, 16, 16),
+                Block.createCuboidShape(8, 0, 13, 10, 16, 15),
+                Block.createCuboidShape(9, 0, 12, 11, 16, 14),
+                Block.createCuboidShape(10, 0, 11, 12, 16, 13),
+                Block.createCuboidShape(11, 0, 10, 13, 16, 12),
+                Block.createCuboidShape(12, 0, 9, 14, 16, 11),
+                Block.createCuboidShape(13, 0, 8, 15, 16, 10),
+                Block.createCuboidShape(14, 0, 7, 16, 16, 9)
         );
         VoxelShape eastNorth = VoxelShapes.union(
-                Block.createCuboidShape(7, 0, 0, 9, 16, 1),
-                Block.createCuboidShape(8, 0, 1, 10, 16, 2),
-                Block.createCuboidShape(9, 0, 2, 11, 16, 3),
-                Block.createCuboidShape(10, 0, 3, 12, 16, 4),
-                Block.createCuboidShape(11, 0, 4, 13, 16, 5),
-                Block.createCuboidShape(12, 0, 5, 14, 16, 6),
-                Block.createCuboidShape(13, 0, 6, 15, 16, 7),
-                Block.createCuboidShape(14, 0, 7, 16, 16, 8),
-                Block.createCuboidShape(15, 0, 8, 16, 16, 9)
+                Block.createCuboidShape(7, 0, 0, 9, 16, 2),
+                Block.createCuboidShape(8, 0, 1, 10, 16, 3),
+                Block.createCuboidShape(9, 0, 2, 11, 16, 4),
+                Block.createCuboidShape(10, 0, 3, 12, 16, 5),
+                Block.createCuboidShape(11, 0, 4, 13, 16, 6),
+                Block.createCuboidShape(12, 0, 5, 14, 16, 7),
+                Block.createCuboidShape(13, 0, 6, 15, 16, 8),
+                Block.createCuboidShape(14, 0, 7, 16, 16, 9)
         );
 
         /*
