@@ -1,6 +1,7 @@
 package com.skaggsm.diagonalpanes.mixin;
 
 import com.skaggsm.diagonalpanes.NotVoxelShape;
+import com.skaggsm.diagonalpanes.VoxelUtils;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.HorizontalConnectingBlock;
@@ -16,8 +17,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import static com.skaggsm.diagonalpanes.VoxelUtils.voxelizeAll;
 
 @Mixin(PaneBlock.class)
 public abstract class PaneBlockMixin extends HorizontalConnectingBlock implements HorizontalConnectingBlockAccessor {
@@ -58,14 +60,14 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
         VoxelShape westSouthCollision = voxelizeAll(westSouthCollisionBoxes, null);
         VoxelShape westSouthBounds = voxelizeAll(westSouthBoundsBoxes, null);
 
-        VoxelShape northWestCollision = voxelizeAll(westSouthCollisionBoxes, PaneBlockMixin::flipZ);
-        VoxelShape northWestBounds = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipZ);
+        VoxelShape northWestCollision = voxelizeAll(westSouthCollisionBoxes, VoxelUtils::flipZ);
+        VoxelShape northWestBounds = voxelizeAll(westSouthBoundsBoxes, VoxelUtils::flipZ);
 
-        VoxelShape eastSouthCollision = voxelizeAll(westSouthCollisionBoxes, PaneBlockMixin::flipX);
-        VoxelShape eastSouthBounds = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipX);
+        VoxelShape eastSouthCollision = voxelizeAll(westSouthCollisionBoxes, VoxelUtils::flipX);
+        VoxelShape eastSouthBounds = voxelizeAll(westSouthBoundsBoxes, VoxelUtils::flipX);
 
-        VoxelShape eastNorthCollision = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipBoth);
-        VoxelShape eastNorthBounds = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipBoth);
+        VoxelShape eastNorthCollision = voxelizeAll(westSouthBoundsBoxes, VoxelUtils::flipBoth);
+        VoxelShape eastNorthBounds = voxelizeAll(westSouthBoundsBoxes, VoxelUtils::flipBoth);
 
         /*
          * Bitmask for each direction
@@ -147,9 +149,9 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
                 p3u16, p4u16,
                 p4u16, p1u16
         );
-        List<Vec3d> northWestBoundingEdges = westSouthBoundingEdges.stream().map(PaneBlockMixin::flipZ).collect(Collectors.toList());
-        List<Vec3d> eastSouthBoundingEdges = westSouthBoundingEdges.stream().map(PaneBlockMixin::flipX).collect(Collectors.toList());
-        List<Vec3d> eastNorthBoundingEdges = westSouthBoundingEdges.stream().map(PaneBlockMixin::flipBoth).collect(Collectors.toList());
+        List<Vec3d> northWestBoundingEdges = westSouthBoundingEdges.stream().map(VoxelUtils::flipZ).collect(Collectors.toList());
+        List<Vec3d> eastSouthBoundingEdges = westSouthBoundingEdges.stream().map(VoxelUtils::flipX).collect(Collectors.toList());
+        List<Vec3d> eastNorthBoundingEdges = westSouthBoundingEdges.stream().map(VoxelUtils::flipBoth).collect(Collectors.toList());
 
         boundingShapes[3] = new NotVoxelShape(westSouthBounds, westSouthBoundingEdges);
         boundingShapes[6] = new NotVoxelShape(northWestBounds, northWestBoundingEdges);
@@ -158,44 +160,5 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
 
         this.setCollisionShapes(collisionShapes);
         this.setBoundingShapes(boundingShapes);
-    }
-
-    private static VoxelShape voxelizeAll(List<Box> boxes, Function<Box, Box> fun) {
-        if (fun == null) fun = Function.identity();
-        return VoxelShapes.union(VoxelShapes.empty(), boxes.stream()
-                .map(fun)
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
-    }
-
-    private static Vec3d flipX(Vec3d in) {
-        return new Vec3d(1 - in.x, in.y, in.z);
-    }
-
-
-    private static Vec3d flipZ(Vec3d in) {
-        return new Vec3d(in.x, in.y, 1 - in.z);
-    }
-
-
-    private static Vec3d flipBoth(Vec3d in) {
-        return flipX(flipZ(in));
-    }
-
-    private static Box flipX(Box in) {
-        return new Box(16 - in.minX, in.minY, in.minZ, 16 - in.maxX, in.maxY, in.maxZ);
-    }
-
-    private static Box flipZ(Box in) {
-        return new Box(in.minX, in.minY, 16 - in.minZ, in.maxX, in.maxY, 16 - in.maxZ);
-    }
-
-    private static Box flipBoth(Box in) {
-        return flipX(flipZ(in));
-    }
-
-    private static VoxelShape voxelize(Box in) {
-        return Block.createCuboidShape(in.minX, in.minY, in.minZ, in.maxX, in.maxY, in.maxZ);
     }
 }
