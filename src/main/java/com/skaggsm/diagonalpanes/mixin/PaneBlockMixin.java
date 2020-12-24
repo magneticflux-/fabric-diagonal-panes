@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Mixin(PaneBlock.class)
@@ -54,47 +55,17 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
                 new Box(6, 0, 14, 8, 16, 16)
         );
 
-        VoxelShape westSouthCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
-        VoxelShape westSouthBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
+        VoxelShape westSouthCollision = voxelizeAll(westSouthCollisionBoxes, null);
+        VoxelShape westSouthBounds = voxelizeAll(westSouthBoundsBoxes, null);
 
-        VoxelShape northWestCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
-                .map(PaneBlockMixin::flipZ)
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
-        VoxelShape northWestBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
-                .map(PaneBlockMixin::flipZ)
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
+        VoxelShape northWestCollision = voxelizeAll(westSouthCollisionBoxes, PaneBlockMixin::flipZ);
+        VoxelShape northWestBounds = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipZ);
 
-        VoxelShape eastSouthCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
-                .map(PaneBlockMixin::flipX)
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
-        VoxelShape eastSouthBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
-                .map(PaneBlockMixin::flipX)
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
+        VoxelShape eastSouthCollision = voxelizeAll(westSouthCollisionBoxes, PaneBlockMixin::flipX);
+        VoxelShape eastSouthBounds = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipX);
 
-        VoxelShape eastNorthCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
-                .map(PaneBlockMixin::flipBoth)
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
-        VoxelShape eastNorthBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
-                .map(PaneBlockMixin::flipBoth)
-                .map(PaneBlockMixin::voxelize)
-                .toArray(VoxelShape[]::new)
-        );
+        VoxelShape eastNorthCollision = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipBoth);
+        VoxelShape eastNorthBounds = voxelizeAll(westSouthBoundsBoxes, PaneBlockMixin::flipBoth);
 
         /*
          * Bitmask for each direction
@@ -187,6 +158,15 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
 
         this.setCollisionShapes(collisionShapes);
         this.setBoundingShapes(boundingShapes);
+    }
+
+    private static VoxelShape voxelizeAll(List<Box> boxes, Function<Box, Box> fun) {
+        if (fun == null) fun = Function.identity();
+        return VoxelShapes.union(VoxelShapes.empty(), boxes.stream()
+                .map(fun)
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
+        );
     }
 
     private static Vec3d flipX(Vec3d in) {
