@@ -5,6 +5,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.HorizontalConnectingBlock;
 import net.minecraft.block.PaneBlock;
+import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -33,84 +34,66 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
         VoxelShape north = Block.createCuboidShape(7, 0, 0, 9, 16, 9);
         VoxelShape east = Block.createCuboidShape(7, 0, 7, 16, 16, 9);
 
-        VoxelShape westSouthCollision = VoxelShapes.union(
-                Block.createCuboidShape(0, 0, 8, 1, 16, 9),
-                Block.createCuboidShape(1, 0, 9, 2, 16, 10),
-                Block.createCuboidShape(2, 0, 10, 3, 16, 11),
-                Block.createCuboidShape(3, 0, 11, 4, 16, 12),
-                Block.createCuboidShape(4, 0, 12, 5, 16, 13),
-                Block.createCuboidShape(5, 0, 13, 6, 16, 14),
-                Block.createCuboidShape(6, 0, 14, 7, 16, 15),
-                Block.createCuboidShape(7, 0, 15, 8, 16, 16)
+        List<Box> westSouthCollisionBoxes = Arrays.asList(
+                new Box(0, 0, 8, 1, 16, 9),
+                new Box(1, 0, 9, 2, 16, 10),
+                new Box(2, 0, 10, 3, 16, 11),
+                new Box(3, 0, 11, 4, 16, 12),
+                new Box(4, 0, 12, 5, 16, 13),
+                new Box(5, 0, 13, 6, 16, 14),
+                new Box(6, 0, 14, 7, 16, 15),
+                new Box(7, 0, 15, 8, 16, 16)
         );
-        VoxelShape westSouthBounds = VoxelShapes.union(
-                Block.createCuboidShape(0, 0, 8, 2, 16, 10),
-                Block.createCuboidShape(1, 0, 9, 3, 16, 11),
-                Block.createCuboidShape(2, 0, 10, 4, 16, 12),
-                Block.createCuboidShape(3, 0, 11, 5, 16, 13),
-                Block.createCuboidShape(4, 0, 12, 6, 16, 14),
-                Block.createCuboidShape(5, 0, 13, 7, 16, 15),
-                Block.createCuboidShape(6, 0, 14, 8, 16, 16)
-        );
-
-        VoxelShape northWestCollision = VoxelShapes.union(
-                Block.createCuboidShape(0, 0, 7, 1, 16, 8),
-                Block.createCuboidShape(1, 0, 6, 2, 16, 7),
-                Block.createCuboidShape(2, 0, 5, 3, 16, 6),
-                Block.createCuboidShape(3, 0, 4, 4, 16, 5),
-                Block.createCuboidShape(4, 0, 3, 5, 16, 4),
-                Block.createCuboidShape(5, 0, 2, 6, 16, 3),
-                Block.createCuboidShape(6, 0, 1, 7, 16, 2),
-                Block.createCuboidShape(7, 0, 0, 8, 16, 1)
-        );
-        VoxelShape northWestBounds = VoxelShapes.union(
-                Block.createCuboidShape(0, 0, 6, 2, 16, 8),
-                Block.createCuboidShape(1, 0, 5, 3, 16, 7),
-                Block.createCuboidShape(2, 0, 4, 4, 16, 6),
-                Block.createCuboidShape(3, 0, 3, 5, 16, 5),
-                Block.createCuboidShape(4, 0, 2, 6, 16, 4),
-                Block.createCuboidShape(5, 0, 1, 7, 16, 3),
-                Block.createCuboidShape(6, 0, 0, 8, 16, 2)
+        List<Box> westSouthBoundsBoxes = Arrays.asList(
+                new Box(0, 0, 8, 2, 16, 10),
+                new Box(1, 0, 9, 3, 16, 11),
+                new Box(2, 0, 10, 4, 16, 12),
+                new Box(3, 0, 11, 5, 16, 13),
+                new Box(4, 0, 12, 6, 16, 14),
+                new Box(5, 0, 13, 7, 16, 15),
+                new Box(6, 0, 14, 8, 16, 16)
         );
 
-        VoxelShape eastSouthCollision = VoxelShapes.union(
-                Block.createCuboidShape(15, 0, 8, 16, 16, 9),
-                Block.createCuboidShape(14, 0, 9, 15, 16, 10),
-                Block.createCuboidShape(13, 0, 10, 14, 16, 11),
-                Block.createCuboidShape(12, 0, 11, 13, 16, 12),
-                Block.createCuboidShape(11, 0, 12, 12, 16, 13),
-                Block.createCuboidShape(10, 0, 13, 11, 16, 14),
-                Block.createCuboidShape(9, 0, 14, 10, 16, 15),
-                Block.createCuboidShape(8, 0, 15, 9, 16, 16)
+        VoxelShape westSouthCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
         );
-        VoxelShape eastSouthBounds = VoxelShapes.union(
-                Block.createCuboidShape(14, 0, 8, 16, 16, 10),
-                Block.createCuboidShape(13, 0, 9, 15, 16, 11),
-                Block.createCuboidShape(12, 0, 10, 14, 16, 12),
-                Block.createCuboidShape(11, 0, 11, 13, 16, 13),
-                Block.createCuboidShape(10, 0, 12, 12, 16, 14),
-                Block.createCuboidShape(9, 0, 13, 11, 16, 15),
-                Block.createCuboidShape(8, 0, 14, 10, 16, 16)
+        VoxelShape westSouthBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
         );
 
-        VoxelShape eastNorthCollision = VoxelShapes.union(
-                Block.createCuboidShape(15, 0, 7, 16, 16, 8),
-                Block.createCuboidShape(14, 0, 6, 15, 16, 7),
-                Block.createCuboidShape(13, 0, 5, 14, 16, 6),
-                Block.createCuboidShape(12, 0, 4, 13, 16, 5),
-                Block.createCuboidShape(11, 0, 3, 12, 16, 4),
-                Block.createCuboidShape(10, 0, 2, 11, 16, 3),
-                Block.createCuboidShape(9, 0, 1, 10, 16, 2),
-                Block.createCuboidShape(8, 0, 0, 9, 16, 1)
+        VoxelShape northWestCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
+                .map(PaneBlockMixin::flipZ)
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
         );
-        VoxelShape eastNorthBounds = VoxelShapes.union(
-                Block.createCuboidShape(14, 0, 6, 16, 16, 8),
-                Block.createCuboidShape(13, 0, 5, 15, 16, 7),
-                Block.createCuboidShape(12, 0, 4, 14, 16, 6),
-                Block.createCuboidShape(11, 0, 3, 13, 16, 5),
-                Block.createCuboidShape(10, 0, 2, 12, 16, 4),
-                Block.createCuboidShape(9, 0, 1, 11, 16, 3),
-                Block.createCuboidShape(8, 0, 0, 10, 16, 2)
+        VoxelShape northWestBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
+                .map(PaneBlockMixin::flipZ)
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
+        );
+
+        VoxelShape eastSouthCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
+                .map(PaneBlockMixin::flipX)
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
+        );
+        VoxelShape eastSouthBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
+                .map(PaneBlockMixin::flipX)
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
+        );
+
+        VoxelShape eastNorthCollision = VoxelShapes.union(VoxelShapes.empty(), westSouthCollisionBoxes.stream()
+                .map(PaneBlockMixin::flipBoth)
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
+        );
+        VoxelShape eastNorthBounds = VoxelShapes.union(VoxelShapes.empty(), westSouthBoundsBoxes.stream()
+                .map(PaneBlockMixin::flipBoth)
+                .map(PaneBlockMixin::voxelize)
+                .toArray(VoxelShape[]::new)
         );
 
         /*
@@ -210,11 +193,29 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
         return new Vec3d(1 - in.x, in.y, in.z);
     }
 
+
     private static Vec3d flipZ(Vec3d in) {
         return new Vec3d(in.x, in.y, 1 - in.z);
     }
 
+
     private static Vec3d flipBoth(Vec3d in) {
         return flipX(flipZ(in));
+    }
+
+    private static Box flipX(Box in) {
+        return new Box(16 - in.minX, in.minY, in.minZ, 16 - in.maxX, in.maxY, in.maxZ);
+    }
+
+    private static Box flipZ(Box in) {
+        return new Box(in.minX, in.minY, 16 - in.minZ, in.maxX, in.maxY, 16 - in.maxZ);
+    }
+
+    private static Box flipBoth(Box in) {
+        return flipX(flipZ(in));
+    }
+
+    private static VoxelShape voxelize(Box in) {
+        return Block.createCuboidShape(in.minX, in.minY, in.minZ, in.maxX, in.maxY, in.maxZ);
     }
 }
