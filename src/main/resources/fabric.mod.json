@@ -22,6 +22,7 @@
   "mixins": [
     "fabric-diagonal-panes.mixins.json"
   ],
+  "accessWidener": "fabric-diagonal-panes.accesswidener",
   "depends": {
     "fabricloader": ">=0.4.0",
     "fabric": "*"

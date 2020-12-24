@@ -1,3 +1,5 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id 'java'
     id 'idea'
@@ -29,6 +31,7 @@ archivesBaseName = project.archives_base_name
 group = project.maven_group
 
 minecraft {
+    accessWidener "src/main/resources/fabric-diagonal-panes.accesswidener"
 }
 
 dependencies {
@@ -83,7 +86,8 @@ shadowJar {
 
 remapJar {
     dependsOn shadowJar
-    input = shadowJar.archiveFile
+    input.set((shadowJar as ShadowJar).archiveFile)
+    remapAccessWidener.set(true)
 }
 
 // Remove the ShipKit publication and recreate it with Fabric artifacts
