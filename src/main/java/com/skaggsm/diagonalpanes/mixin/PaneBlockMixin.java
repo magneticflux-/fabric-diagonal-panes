@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 import static com.skaggsm.diagonalpanes.VoxelUtils.voxelizeAll;
 
 @Mixin(PaneBlock.class)
-public abstract class PaneBlockMixin extends HorizontalConnectingBlock implements HorizontalConnectingBlockAccessor {
+public abstract class PaneBlockMixin extends HorizontalConnectingBlock {
 
     protected PaneBlockMixin(float radius1, float radius2, float boundingHeight1, float boundingHeight2, float collisionHeight, Settings settings) {
         super(radius1, radius2, boundingHeight1, boundingHeight2, collisionHeight, settings);
@@ -158,7 +158,7 @@ public abstract class PaneBlockMixin extends HorizontalConnectingBlock implement
         boundingShapes[9] = new NotVoxelShape(eastSouthBounds, eastSouthBoundingEdges);
         boundingShapes[12] = new NotVoxelShape(eastNorthBounds, eastNorthBoundingEdges);
 
-        this.setCollisionShapes(collisionShapes);
-        this.setBoundingShapes(boundingShapes);
+        this.collisionShapes = collisionShapes;
+        this.boundingShapes = boundingShapes;
     }
 }

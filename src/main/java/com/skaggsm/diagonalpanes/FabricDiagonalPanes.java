@@ -2,6 +2,7 @@ package com.skaggsm.diagonalpanes;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
 import net.minecraft.util.Identifier;
@@ -18,9 +19,8 @@ public class FabricDiagonalPanes implements ModInitializer {
         ModContainer modContainer = FabricLoader.getInstance().getModContainer(MODID).orElseThrow(RuntimeException::new);
         boolean success = ResourceManagerHelper.registerBuiltinResourcePack(
                 new Identifier(MODID, "default"),
-                "resourcepack",
                 modContainer,
-                true
+                ResourcePackActivationType.ALWAYS_ENABLED
         );
         if (!success)
             LOGGER.warn("Failed to register built-in resource pack!");

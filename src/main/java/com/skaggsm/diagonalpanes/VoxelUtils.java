@@ -5,6 +5,7 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.function.Function;
@@ -57,7 +58,7 @@ public class VoxelUtils {
         return Block.createCuboidShape(in.minX, in.minY, in.minZ, in.maxX, in.maxY, in.maxZ);
     }
 
-    public static VoxelShape voxelizeAll(List<Box> boxes, Function<Box, Box> modification) {
+    public static VoxelShape voxelizeAll(List<Box> boxes, @Nullable Function<Box, Box> modification) {
         if (modification == null) modification = Function.identity();
 
         return VoxelShapes.union(VoxelShapes.empty(), boxes.stream()

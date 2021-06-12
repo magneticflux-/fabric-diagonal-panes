@@ -11,7 +11,7 @@
     "homepage": "https://github.com/magneticflux-/fabric-diagonal-panes",
     "sources": "https://github.com/magneticflux-/fabric-diagonal-panes"
   },
-  "license": "CC0-1.0",
+  "license": "LGPL-3.0-or-later",
   "icon": "assets/fabric-diagonal-panes/icon.png",
   "environment": "*",
   "entrypoints": {
@@ -24,7 +24,8 @@
   ],
   "accessWidener": "fabric-diagonal-panes.accesswidener",
   "depends": {
-    "fabricloader": ">=0.4.0",
+    "minecraft": "1.17.x",
+    "fabricloader": ">=0.11.0",
     "fabric": "*"
   },
   "suggests": {
