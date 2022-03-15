@@ -10,10 +10,10 @@ plugins {
     java
     idea
     `maven-publish`
-    id("fabric-loom") version "0.10-SNAPSHOT"
-    id("com.github.ben-manes.versions") version "0.39.0"
+    id("fabric-loom") version "0.11-SNAPSHOT"
+    id("com.github.ben-manes.versions") version "0.42.0"
     id("com.matthewprenger.cursegradle") version "1.4.0"
-    id("com.diffplug.spotless") version "6.0.4"
+    id("com.diffplug.spotless") version "6.3.0"
     id("org.shipkit.shipkit-auto-version") version "1.+"
     id("org.shipkit.shipkit-changelog") version "1.+"
     id("org.shipkit.shipkit-github-release") version "1.+"
