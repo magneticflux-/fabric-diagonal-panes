@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "com.skaggsm.diagonalpanes.mixin",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
   "mixins": ["PaneBlockMixin"],
   "client": [
   ],
