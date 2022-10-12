@@ -10,10 +10,11 @@ plugins {
     java
     idea
     `maven-publish`
-    id("fabric-loom") version "0.12-SNAPSHOT"
+    id("fabric-loom") version "1.0-SNAPSHOT"
     id("com.github.ben-manes.versions") version "0.42.0"
     id("com.matthewprenger.cursegradle") version "1.4.0"
-    id("com.diffplug.spotless") version "6.3.0"
+    id("com.modrinth.minotaur") version "2.+"
+    id("com.diffplug.spotless") version "6.11.0"
     id("org.shipkit.shipkit-auto-version") version "1.+"
     id("org.shipkit.shipkit-changelog") version "1.+"
     id("org.shipkit.shipkit-github-release") version "1.+"
@@ -47,6 +48,7 @@ val yarn_mappings: String by project
 val loader_version: String by project
 val fabric_version: String by project
 val curseforge_id: String by project
+val modrinth_id: String by project
 
 base {
     archivesBaseName = archives_base_name
@@ -69,12 +71,12 @@ dependencies {
 
 tasks.processResources {
     inputs.properties(
-            "version" to project.version
+        "version" to project.version
     )
 
     filesMatching("fabric.mod.json") {
         expand(
-                "version" to project.version
+            "version" to project.version
         )
     }
 }
@@ -145,7 +147,7 @@ curseforge {
         addGameVersion(minecraft_version)
         addGameVersion("Fabric")
         changelog =
-                "View the latest changelog here: https://github.com/magneticflux-/fabric-diagonal-panes/releases"
+            "View the latest changelog here: https://github.com/magneticflux-/fabric-diagonal-panes/releases"
         mainArtifact(tasks.remapJar.get(), closureOf<CurseArtifact> {
             relations(closureOf<CurseRelation> {
                 requiredDependency("fabric-api")
@@ -158,6 +160,24 @@ curseforge {
     })
 }
 
+modrinth {
+    // Stored in ~/.gradle/gradle.properties
+    when {
+        project.hasProperty("modrinthApiKey") -> token.set(project.property("modrinthApiKey").toString())
+        System.getenv("MODRINTH_API_KEY") != null -> token.set(System.getenv("MODRINTH_API_KEY"))
+        else -> println("No Modrinth API key found, \'modrinth\' tasks will not work")
+    }
+    projectId.set(modrinth_id)
+    versionNumber.set(version.toString())
+    gameVersions.add(minecraft_version)
+    uploadFile.set(tasks.remapJar as Any)
+    additionalFiles.add(tasks.remapSourcesJar as Any)
+    loaders.addAll("fabric", "quilt")
+    dependencies {
+        required.project("fabric-api")
+    }
+}
+
 spotless {
 }
 
@@ -165,8 +185,9 @@ spotless {
 afterEvaluate {
     // CurseGradle generates tasks in afterEvaluate for each project
     // There isn't really any other way to make it depend on a task unless it is an AbstractArchiveTask
-    val curseforgeTask = tasks.getByName("curseforge${curseforge_id}")
+    val curseforgeTask = tasks.getByName("curseforge$curseforge_id")
+    val modrinthTask = tasks.modrinth
     tasks.publish {
-        dependsOn(curseforgeTask)
+        dependsOn(curseforgeTask, modrinthTask)
     }
 }
